@@ -1,0 +1,9 @@
+{
+  "name": "react-hooks-sample",
+  "version": "1.0.0",
+  "description": "react hooks my samples",
+  "main": "index.js",
+  "repository": "https://github.com/bonybody/react-hooks-sample.git",
+  "author": "bony_body <63352797+bonybody@users.noreply.github.com>",
+  "license": "MIT"
+}
