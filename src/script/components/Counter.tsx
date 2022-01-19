@@ -12,7 +12,7 @@ export function Counter() {
 
   return (
     <>
-      <div><span>clicked: {count}</span></div>
+      <p><span>clicked: {count}</span></p>
       <div>
         <button onClick={clickHandler}>
           Count Button
