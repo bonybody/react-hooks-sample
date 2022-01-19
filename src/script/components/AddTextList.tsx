@@ -1,10 +1,23 @@
 import React, {FormEvent, useEffect, useRef, useState} from 'react';
 
 export function AddTextList() {
-  const inputTextRef = useRef<HTMLInputElement>(null)
+  const inputTextRef = useRef<HTMLTextAreaElement>(null)
   const [textList, setTextList] = useState<Array<string>>([])
 
   const submitHandler = (event: FormEvent) => {
+    if (inputTextRef.current === null) return
+    submitInputText()
+    event.preventDefault()
+  }
+
+  const keyPressHandler = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const isCtrl = event.ctrlKey
+    if (isCtrl) {
+      submitInputText()
+    }
+  }
+
+  const submitInputText = () => {
     if (inputTextRef.current === null) return
 
     const inputText = inputTextRef.current.value
@@ -17,7 +30,6 @@ export function AddTextList() {
       inputTextRef.current.value = insteadInputText
     }
     inputTextRef.current.focus()
-    event.preventDefault()
   }
 
   const addTextList = (text: string) => {
@@ -32,7 +44,7 @@ export function AddTextList() {
     <>
       <div>
         <form onSubmit={submitHandler}>
-          <input type="text" ref={inputTextRef}/>
+          <textarea ref={inputTextRef} onKeyPress={keyPressHandler}/>
           <input type={"submit"} value={"Add Text"}/>
         </form>
       </div>
